@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>员工</title>
+    <link th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+</head>
+<body onload="showtime()">
+<div th:replace="~{commons/bar::topbar}">
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <!--				引入sidebar-->
+        <div th:replace="~{commons/bar::#sidebar(activeUri='room')}"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/adminroom/modify}" method="post">
+                <input type="hidden" name="_method" value="put" th:if="${room!=null}"/>
+                <input type="hidden" name="adminAccount" th:if="${room!=null}" th:value="${room.roomId}"/>
+                <div class="form-group">
+                    <label>房间编号</label>
+                    <input name="roomId" type="text" readonly="readonly" class="form-control" placeholder="无需输入" th:value="${room!=null}?${room.roomId}">
+                </div>
+                <div class="form-group">
+                    <label>房间价格</label>
+                    <input name="roomPrice" type="text" class="form-control" th:value="${room!=null}?${room.roomPrice}">
+                </div>
+                <div class="form-group">
+                    <label>床位数量</label>
+                    <input name="roomBedNum" type="text" class="form-control" th:value="${room!=null}?${room.roomBedNum}">
+                </div>
+                <div class="form-group">
+                    <label>房间状态</label>
+                    <input name="roomStat" type="text" class="form-control" th:value="${room!=null}?${room.roomStat}">
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${room!=null}?'修改':'添加'"></button>
+            </form>
+        </main>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/asserts/js/showtime.js}"></script>
+</body>
+</html>

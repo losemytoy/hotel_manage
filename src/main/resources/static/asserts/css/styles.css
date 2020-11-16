@@ -232,3 +232,9 @@ form button:hover {
             transform: translateY(-700px) rotate(600deg);
   }
 }
+.clock{
+  font-size: 15px;
+  text-align: center;
+  margin-top: 16px;
+  font-weight: bold;
+}

@@ -1,10 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>成功</title>
-</head>
-<body>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-</body>
+    <title>管理员主页</title>
+    <link th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+</head>
+
+    <body onload="showtime()">
+    <div th:replace="~{commons/bar::topbar}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{commons/bar::#sidebar(activeUri='main')}"></div>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                    <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <h1 class="h2">欢迎来到后台管理系统</h1>
+                </div>
+                <div class="row" style="margin: 20px">
+                    <div class="col-md-2 column text-center"
+                         style="font-size: 20px;color: #EBEBEB;background: #686868;margin: 20px">
+                        <div style="padding: 20px">
+                            用户人数
+                            <p th:text="${userCount}"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 column text-center"
+                         style="font-size: 20px;color: #EBEBEB;background: #686868;margin: 20px">
+                        <div style="padding: 20px">
+                            员工人数
+                            <p th:text="${empCount}"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 column text-center"
+                         style="font-size: 20px;color: #EBEBEB;background: #686868;margin: 20px">
+                        <div style="padding: 20px">
+                            房间数量
+                            <div>
+                                <a th:text="${empRoomCount}"></a>/<a th:text="${roomCount}"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{/asserts/js/showtime.js}"></script>
+    </body>
+
 </html>

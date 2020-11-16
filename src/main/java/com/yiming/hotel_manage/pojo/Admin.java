@@ -6,19 +6,19 @@ import java.util.Date;
 import java.util.Set;
 
 public class Admin implements Serializable {
-    private String adminAccount;
+    private Integer adminAccount;
     private String adminName;
     private String adminPwd;
-    private char adminGender;
+    private Integer adminGender;
     private Date adminJoin;
     private String adminType;
     private Set<Role> roles;
 
-    public String getAdminAccount() {
+    public Integer getAdminAccount() {
         return adminAccount;
     }
 
-    public void setAdminAccount(String adminAccount) {
+    public void setAdminAccount(Integer adminAccount) {
         this.adminAccount = adminAccount;
     }
 
@@ -38,11 +38,11 @@ public class Admin implements Serializable {
         this.adminPwd = adminPwd;
     }
 
-    public char getAdminGender() {
+    public Integer getAdminGender() {
         return adminGender;
     }
 
-    public void setAdminGender(char adminGender) {
+    public void setAdminGender(Integer adminGender) {
         this.adminGender = adminGender;
     }
 

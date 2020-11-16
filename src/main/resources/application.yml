@@ -8,8 +8,6 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 
 
-
-
     druid:
       #初始化时建立物理连接的个数
       initial-size: 5
@@ -49,3 +47,19 @@ spring:
         enabled: true
         login-username: admin
         login-password: 123456
+
+  #国际化
+  messages:
+    basename: i18n.login
+
+  #开启put请求的过滤器
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+    format:
+      date: yyyy-MM-dd
+
+  thymeleaf:
+    cache: false
+

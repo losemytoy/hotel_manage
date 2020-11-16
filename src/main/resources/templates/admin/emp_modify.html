@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>员工</title>
+    <link th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+</head>
+<body onload="showtime()">
+<div th:replace="~{commons/bar::topbar}">
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <!--				引入sidebar-->
+        <div th:replace="~{commons/bar::#sidebar(activeUri='emps')}"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/admin/modify}" method="post">
+                <input type="hidden" name="_method" value="put" th:if="${admin!=null}"/>
+                <input type="hidden" name="adminAccount" th:if="${admin!=null}" th:value="${admin.adminAccount}"/>
+                <div class="form-group">
+                    <label>员工姓名</label>
+                    <input name="adminName" type="text" class="form-control" placeholder="张三" th:value="${admin!=null}?${admin.adminName}">
+                </div>
+                <div class="form-group">
+                    <label>员工密码</label>
+                    <input name="adminPwd" type="text" class="form-control" placeholder="请勿设置过简单的密码" th:value="${admin!=null}?${admin.adminPwd}">
+                </div>
+                <div class="form-group">
+                    <label>员工性别</label><br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="adminGender"  value="1" th:checked="${admin!=null}?${admin.adminGender==1}">
+                        <label class="form-check-label">男</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="adminGender"  value="0" th:checked="${admin!=null}?${admin.adminGender==0}">
+                        <label class="form-check-label">女</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>员工入职时间</label>
+                    <input name="adminJoin" type="text" class="form-control" placeholder="zhangsan" th:value="${admin!=null}?${#dates.format(admin.adminJoin,'yyyy-MM-dd HH:mm')}">
+                </div>
+                <div class="form-group">
+                    <label>员工类型</label>
+                    <input name="adminType" type="text" class="form-control" placeholder="admin/employee" th:value="${admin!=null}?${admin.adminType}">
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${admin!=null}?'修改':'添加'"></button>
+            </form>
+        </main>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/asserts/js/showtime.js}"></script>
+</body>
+</html>

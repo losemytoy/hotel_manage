@@ -3,17 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <title>管理员登录</title>
-        <link href="asserts/css/styles.css" th:href="@{asserts/css/styles.css}" rel="stylesheet">
+        <link href="asserts/css/styles.css" th:href="@{/asserts/css/styles.css}" rel="stylesheet">
+        <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.css}" rel="stylesheet">
     </head>
 
     <body>
         <div class="wrapper" >
             <div class="container">
-                <h1>Welcome</h1>
+                <h1 th:text="#{login.tip}">Welcome</h1>
                 <form class="form" action="" th:action="@{/admin_login}" method="post">
-                    <input type="text" placeholder="请输入账号" name="adminAccount" >
-                    <input type="password" placeholder="请输入密码" name="adminPwd">
-                    <button type="submit" id="login-button">登陆</button>
+                    <input type="text" placeholder="请输入账号" th:placeholder="#{login.username}" name="adminAccount" >
+                    <input type="password" placeholder="请输入密码" th:placeholder="#{login.password}" name="adminPwd">
+                     <button type="submit" id="login-button" th:text="#{login.btn}">Sign in</button>
+                    <p class=" mb-3 text-muted" style="margin-top: 5px">© 2020-2021</p>
+                    <a class="btn btn-sm" th:href="@{/admin(l='zh_CN')}">中文</a>
+                    <a class="btn btn-sm" th:href="@{/admin(l='en_US')}">English</a>
                 </form>
             </div>
 
