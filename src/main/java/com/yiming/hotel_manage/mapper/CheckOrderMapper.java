@@ -18,4 +18,7 @@ public interface CheckOrderMapper {
     @Delete("delete from tb_room_check where check_id=#{id}")
     void deleteCheckOrder(Integer id);
 
+    @Select("select * from tb_room_check where check_id=#{id}")
+    CheckOrder getCheckOrderById(Integer id);
+
 }

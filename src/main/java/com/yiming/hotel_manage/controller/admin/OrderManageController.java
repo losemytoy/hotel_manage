@@ -38,6 +38,14 @@ public class OrderManageController {
         return "redirect:/admin/checkorder";
     }
 
+    //查询入住订单
+    @PostMapping("/admin/getCheckInfo")
+    public String getCheckInfo(@RequestParam("orderId") Integer id,Model model){
+        CheckOrder checkOrder = checkService.getCheckOrderById(id);
+        model.addAttribute("checkorders",checkOrder);
+        return "admin/order_check_Manage";
+    }
+
     //显示所有预约订单信息
     @GetMapping("/admin/resorder")
     public String getAllResOrder(Model model)throws Exception{
@@ -52,6 +60,14 @@ public class OrderManageController {
     public String deleteResOrder(@PathVariable("id") Integer id){
         reserveService.deleteResOrder(id);
         return "redirect:/admin/resorder";
+    }
+
+    //查询入住订单
+    @PostMapping("/admin/getResInfo")
+    public String getResInfo(@RequestParam("orderId") Integer id,Model model){
+        ReserveOrder reserveOrder = reserveService.getResOrderById(id);
+        model.addAttribute("resorders",reserveOrder);
+        return "admin/order_reserve_Manage";
     }
 
 

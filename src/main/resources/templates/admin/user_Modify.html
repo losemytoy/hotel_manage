@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>员工</title>
+    <link th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+</head>
+<body onload="showtime()">
+<div th:replace="~{commons/bar::topbar}">
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <!--				引入sidebar-->
+        <div th:replace="~{commons/bar::#sidebar(activeUri='user')}"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/adminuser/modify}" method="post">
+                <input type="hidden" name="_method" value="put" th:if="${user!=null}"/>
+<!--                <input type="hidden" name="userAccount" th:if="${user!=null}" th:value="${user.userAccount}"/>-->
+                <div class="form-group">
+                    <label>用户账号</label>
+                    <input name="userAccount" type="text" readonly="readonly" class="form-control" th:value="${user!=null}?${user.userAccount}">
+                </div>
+                <div class="form-group">
+                    <label>用户密码</label>
+                    <input name="userPwd" type="text" readonly="readonly" class="form-control" th:value="${user!=null}?${user.userPwd}">
+                </div>
+                <div class="form-group">
+                    <label>用户身份证</label>
+                    <input name="userSfz" type="text" class="form-control" th:value="${user!=null}?${user.userSfz}">
+                </div>
+                <div class="form-group">
+                    <label>用户姓名</label>
+                    <input name="userName" type="text"  class="form-control"  th:value="${user!=null}?${user.userName}">
+                </div>
+                <div class="form-group">
+                    <label>用户性别</label>
+                    <input name="userSex" type="text"  class="form-control" th:value="${user!=null}?${user.userSex}">
+                </div>
+                <div class="form-group">
+                    <label>用户年龄</label>
+                    <input name="userAge" type="text" class="form-control" th:value="${user!=null}?${user.userAge}">
+                </div>
+                <div class="form-group">
+                    <label>用户联系方式</label>
+                    <input name="userTel" type="text" class="form-control" th:value="${user!=null}?${user.userTel}">
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${user!=null}?'修改':'添加'"></button>
+            </form>
+        </main>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/asserts/js/showtime.js}"></script>
+</body>
+</html>

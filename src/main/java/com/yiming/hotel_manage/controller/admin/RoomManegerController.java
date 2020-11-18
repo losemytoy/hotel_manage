@@ -63,4 +63,12 @@ public class RoomManegerController {
         roomService.addRoom(room);
         return "redirect:/admin/rooms";
     }
+
+    //查找房间
+    @PostMapping("/admin/getRoomInfo")
+    public String getRoomInfo(@RequestParam("roomId") Integer id,Model model){
+        Room room = roomService.getRoomById(id);
+        model.addAttribute("rooms",room);
+        return "admin/room_Manage";
+    }
 }

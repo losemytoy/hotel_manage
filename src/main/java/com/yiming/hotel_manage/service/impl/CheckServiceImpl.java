@@ -20,7 +20,7 @@ public class CheckServiceImpl implements CheckService {
 
     @Override
     public CheckOrder getCheckOrderById(Integer id) {
-        return null;
+        return checkOrderMapper.getCheckOrderById(id);
     }
 
     @Override

@@ -10,11 +10,6 @@ import java.util.Locale;
 
 @Configuration
 public class DefaultViewConfig implements WebMvcConfigurer {
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-//                .excludePathPatterns("/index","/","/login","/asserts/**","/webjars/**","asserts/**");
-//    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

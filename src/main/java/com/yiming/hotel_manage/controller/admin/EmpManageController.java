@@ -92,6 +92,4 @@ public class EmpManageController {
         model.addAttribute("admins",admin);
         return "admin/emp_Manage";
     }
-
-
 }

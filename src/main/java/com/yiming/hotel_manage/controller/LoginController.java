@@ -14,9 +14,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class LoginController {
@@ -42,23 +44,33 @@ public class LoginController {
                 if ("admin".equals(admin.getAdminType())) {
                     return "redirect:/admin/main";
                 }
+//                else if ("employee".equals(admin.getAdminType())){
+//                    return "admin/empMain";
+//                }
             } catch (UnknownAccountException uae) {
                 log.info("There is no user with username of " + token.getPrincipal());
                 String msg = "用户不存在";
                 model.addAttribute("msg", msg);
-                return "admin";
+                return "admin/admin_login";
             } catch (IncorrectCredentialsException ice) {
                 log.info("Password for account " + token.getPrincipal() + " was incorrect!");
                 String msg = "密码不正确";
                 model.addAttribute("msg", msg);
-                return "admin";
+                return "admin/admin_login";
             } catch (AuthenticationException ae) {
                 //unexpected condition?  error?
                 String msg = "未知错误";
                 model.addAttribute("msg", msg);
-                return "admin";
+                return "admin/admin_login";
             }
         }
-        return "admin";
+        return "admin/admin_login";
+    }
+
+    @GetMapping("/loginOut")
+    public String loginOut() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "redirect:/admin";
     }
 }

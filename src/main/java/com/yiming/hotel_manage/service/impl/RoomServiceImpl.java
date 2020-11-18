@@ -1,7 +1,6 @@
 package com.yiming.hotel_manage.service.impl;
 
 import com.yiming.hotel_manage.mapper.RoomMapper;
-import com.yiming.hotel_manage.pojo.Admin;
 import com.yiming.hotel_manage.pojo.Room;
 import com.yiming.hotel_manage.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;

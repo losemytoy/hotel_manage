@@ -12,8 +12,11 @@ import java.util.List;
 @Repository
 public interface ResOrderMapper {
     @Select("select * from tb_room_reserve")
-    List<ReserveService> getAllResOrder();
+    List<ReserveOrder> getAllResOrder();
 
     @Delete("delete from tb_room_reserve where reserve_id=#{id}")
     void deleteResOrder(Integer id);
+
+    @Select("select * from tb_room_reserve where reserve_id=#{id}")
+    ReserveOrder getResOrderById(Integer id);
 }
