@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>用户首页</title>
+    <link th:href="@{/asserts/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/sss.css}" rel="stylesheet">
+</head>
+<body onload="showtime()">
+<div th:replace="~{commons/bar::usertopbar}"></div>
+<form id="form1" name="form1" method="post" th:action="@{/user/modify}" >
+    <input type="hidden" name="_method" value="put" th:if="${user!=null}"/>
+    <table align="center" width="600"  border="1" cellpadding="0" cellspacing="0" style="position: relative;top: 100px;">
+        <tr>
+            <th width="64" style="text-align: center;background-color: #0C0058;color: white;" scope="row">账号</th>
+            <td ><input style="width: 450px;" readonly="readonly" type="text" name="userAccount" th:value="${user.userAccount}"/>
+            </td>
+        </tr>
+        <tr>
+            <th width="64" style="text-align: center;background-color: #0C0058;color: white;" scope="row">密码</th>
+            <td ><input style="width: 450px;" type="text" name="userPwd"  th:value="${user.userPwd}"/>
+            </td>
+        </tr>
+        <tr>
+            <th width="64" style="text-align: center;background-color: #0C0058;color: white;" scope="row">身份证</th>
+            <td width="450px"><input style="width: 450px;" type="text" name="userSfz" th:value="${user.userSfz}"/>
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: center;background-color: #0C0058;color: white;" scope="row">姓名</th>
+            <td  width="450px"><input style="width: 450px;" type="text" name="userName" th:value="${user.userName}"/></td>
+        </tr>
+        <tr>
+            <th style="text-align: center;background-color: #0C0058;color: white;" scope="row" >性别</th>
+            <td  width="450px"><input style="width: 450px;" type="text" name="userSex" th:value="${user.userSex}"/></td>
+        </tr>
+        <tr>
+            <th style="text-align: center;background-color: #0C0058;color: white;" scope="row" >年龄</th>
+            <td  width="450px"><input style="width: 450px;" type="text" name="userAge" th:value="${user.userAge}"/></td>
+        </tr>
+        <tr>
+            <th style="text-align: center;background-color: #0C0058;color: white;" scope="row" >联系方式</th>
+            <td  width="450px"><input style="width: 450px;" type="text" name="userTel" th:value="${user.userTel}"/></td>
+        </tr>
+
+    </table>
+    <table align="center" style="position: relative;top: 100px;">
+        <tr>
+            <td  colspan="2" align="center"><input style="width: 60px;height: 40px;border-width: 0px;border-radius: 3px;background: #1E90FF;cursor: pointer;outline: none;font-family: Microsoft YaHei;color: white;font-size: 17px;position: relative;left: 30px;"
+                                                   type="reset" name="button" id="button" value="重置"/> &nbsp;&nbsp;&nbsp;&nbsp; <input
+                    style="width: 60px;height: 40px;border-width: 0px;border-radius: 3px;background: #1E90FF;cursor: pointer;outline: none;font-family: Microsoft YaHei;color: white;font-size: 17px;position: relative;left: 30px;"
+                    type="submit" name="button2" id="button2" value="修改"/></td>
+        </tr>
+    </table>
+</form>
+
+<script type="text/javascript" src="/asserts/js/jquery-3.3.1.min.js"  ></script>
+<script type="text/javascript" src="/asserts/js/bootstrap.min.js"  ></script>
+<script type="text/javascript"  th:src="@{/asserts/js/showtime.js}"></script>
+</body>
+</html>

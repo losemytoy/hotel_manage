@@ -70,5 +70,12 @@ public class OrderManageController {
         return "admin/order_reserve_Manage";
     }
 
-
+    //办理入住（删除预约订单，添加入住订单）
+    @RequestMapping("/admincheck/{id}/{account}")
+    public String adminCheck(@PathVariable("id") Integer id,
+                             @PathVariable("account") String account){
+        reserveService.deleteResOrderByRoom(id);
+        checkService.addCheckOrder(account,id);
+        return "redirect:/admin/resorder";
+    }
 }

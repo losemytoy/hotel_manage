@@ -33,4 +33,7 @@ public interface RoomMapper {
 
     @Insert("insert tb_room(room_price,room_bednum,room_stat) values(#{roomPrice},#{roomBedNum},#{roomStat})")
     void addRoom(Room room);
+
+    @Insert("insert tb_room_reserve(user_account,room_id) values(#{account},#{id})")
+    void resRoom(Integer id,String account);
 }

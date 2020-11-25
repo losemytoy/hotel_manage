@@ -23,7 +23,7 @@
                 </form>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped table-sm">
+                <table class="table table-striped table-sm" >
                     <thead>
                     <tr>
                         <th>订单编号</th>
@@ -40,6 +40,7 @@
                             <td th:text="${resorder.roomId}"></td>
                             <td th:text="${resorder.reserveTime}"></td>
                             <td>
+                                <a type="submit" class="btn btn-sm btn-primary" th:href="@{/admincheck/{id}/{account}(id=${resorder.roomId},account=${resorder.userAccount})}">办理入住</a>
                                 <button th:attr="del_uri=@{/adminresdel/}+${resorder.reserveId}" class="btn btn-sm btn-danger deleteBtn">删除</button>
                             </td>
                         </tr>

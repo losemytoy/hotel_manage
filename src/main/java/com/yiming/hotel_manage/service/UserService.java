@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserService {
 
-    Admin selectAdmin(String adminAccount);
+    User selectUser(String userAccount);
 
     List<User> getAllUser() ;
 
@@ -22,5 +22,5 @@ public interface UserService {
 
     int getUserCount();
 
-    User getUserInfo(String name);
+    List<User> getUserInfo(String name);
 }

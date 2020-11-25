@@ -39,4 +39,14 @@ public class ReserveServiceImpl implements ReserveService {
     public void addResOrder(ReserveOrder reserveOrder) {
 
     }
+
+    @Override
+    public List<ReserveOrder> getResByUser(String id) {
+        return resOrderMapper.getResByUser(id);
+    }
+
+    @Override
+    public void deleteResOrderByRoom(Integer id) {
+        resOrderMapper.deleteResOrderByRoom(id);
+    }
 }

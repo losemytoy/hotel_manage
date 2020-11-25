@@ -15,9 +15,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+
     @Override
-    public Admin selectAdmin(String adminAccount) {
-        return null;
+    public User selectUser(String userAccount) {
+        return userMapper.selectUser(userAccount);
     }
 
     @Override
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(User user) {
-
+        userMapper.addUser(user);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserInfo(String name) {
+    public List<User> getUserInfo(String name) {
         return userMapper.getUserInfo(name);
     }
 }

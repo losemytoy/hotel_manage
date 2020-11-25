@@ -21,4 +21,10 @@ public interface CheckOrderMapper {
     @Select("select * from tb_room_check where check_id=#{id}")
     CheckOrder getCheckOrderById(Integer id);
 
+    @Select("select * from tb_room_check where user_account=#{id}")
+    List<CheckOrder> getCheckByUser(String id);
+
+    @Insert("insert tb_room_check(user_account,room_id) values(#{userAccount},#{roomId})")
+    void addCheckOrder(String userAccount,Integer roomId);
+
 }

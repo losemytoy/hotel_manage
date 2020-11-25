@@ -7,7 +7,7 @@ spring:
     initialization-mode: always
     type: com.alibaba.druid.pool.DruidDataSource
 
-
+    #druid监控地址：http://127.0.0.1:8080/druid/index.html
     druid:
       #初始化时建立物理连接的个数
       initial-size: 5

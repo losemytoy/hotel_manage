@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link href="asserts/css/styles.css" th:href="@{/asserts/css/styles.css}" rel="stylesheet">
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.css}" rel="stylesheet">
+</head>
+
+<body>
+<a th:href="@{/user_register}" id="register-button" th:text="#{login.rebtn}">Sign up</a>
+<div class="wrapper" >
+    <div class="container">
+        <h1 th:text="#{userlogin.tip}">Welcome</h1>
+        <form class="form" action="" th:action="@{/user_login}" method="post">
+            <input type="text" placeholder="请输入账号" th:placeholder="#{login.username}" name="userAccount" >
+            <input type="password" placeholder="请输入密码" th:placeholder="#{login.password}" name="userPwd">
+            <button type="submit" id="login-button" th:text="#{login.btn}">Sign in</button>
+            <p class=" mb-3 text-muted" style="margin-top: 5px">© 2020-2021</p>
+            <a class="btn btn-sm" th:href="@{/login/user_login(l='zh_CN')}">中文</a>
+            <a class="btn btn-sm" th:href="@{/login/user_login(l='en_US')}">English</a>
+        </form>
+
+    </div>
+
+    <!--            动画-->
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+
+</div>
+<script th:inline="javascript">
+    var message = [[${msg}]];
+    if (message != "null" && message != null && message != "") {
+        alert(message);
+    }
+</script>
+</body>
+</html>

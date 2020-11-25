@@ -20,4 +20,5 @@ public interface RoomService {
 
     void addRoom(Room room);
 
+    void resRoom(Integer id,String account);
 }

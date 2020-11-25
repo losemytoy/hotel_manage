@@ -6,6 +6,10 @@ import java.util.Date;
 import java.util.Set;
 
 public class Admin implements Serializable {
+
+    //系统最高权限
+    public static final int SUPER_ADMIN = 0;
+
     private Integer adminAccount;
     private String adminName;
     private String adminPwd;

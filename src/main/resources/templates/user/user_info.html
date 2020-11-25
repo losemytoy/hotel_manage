@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>个人信息</title>
+    <link th:href="@{/asserts/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/sss.css}" rel="stylesheet">
+</head>
+<body onload="showtime()">
+<div th:replace="~{commons/bar::usertopbar}"></div>
+<div style="width: 15%;float: left;position: relative;left: 423px;top:80px;background-color: #0C0058;">
+    <tr>
+        <td width="94px"><div style="height: 60px;border: 1px solid gray;line-height: 60px;color: white;" align="center">账号</div></td>
+    </tr>
+    <tr>
+        <td width="155"><div style="height: 60px;border: 1px solid gray;line-height: 60px;color: white;" align="center">密码</div></td>
+    </tr>
+    <tr>
+        <td width="133"><div style="height: 60px;border: 1px solid gray;line-height: 60px;color: white;" align="center">身份证</div></td>
+    </tr>
+    <tr>
+        <td width="133"><div style="height: 60px;border: 1px solid gray;line-height: 60px;color: white;" align="center">名字</div></td>
+    </tr>
+    <tr>
+        <td width="133"><div style="height: 60px;border: 1px solid gray;line-height: 60px;color: white;" align="center">性别</div></td>
+    </tr>
+    <tr>
+        <td width="81"><div style="height: 60px;border: 1px solid gray;line-height: 60px;color: white;" align="center">年龄</div></td>
+    </tr>
+    <tr>
+        <td width="81"><div style="height: 60px;border: 1px solid gray;line-height: 60px;color: white;"  align="center">联系方式</div></td>
+    </tr>
+</div>
+<div style="width: 30%;float: right;position: relative;right: 423px;top:80px;background-color: white;">
+    <tr >
+        <td>
+            <div style="height: 60px;border: 1px solid gray;line-height: 60px" align="center" th:text="${user.userAccount}"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="height: 60px;border: 1px solid gray;line-height: 60px" align="center" th:text="${user.userPwd}"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="height: 60px;border: 1px solid gray;line-height: 60px" align="center" th:text="${user.userSfz}"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="height: 60px;border: 1px solid gray;line-height: 60px" align="center" th:text="${user.userName}"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="height: 60px;border: 1px solid gray;line-height: 60px" align="center" th:text="${user.userSex}"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="height: 60px;border: 1px solid gray;line-height: 60px" align="center" th:text="${user.userAge}"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="height: 60px;border: 1px solid gray;line-height: 60px" align="center" th:text="${user.userTel}"></div>
+        </td>
+    </tr>
+</div>
+
+<script type="text/javascript" src="/asserts/js/jquery-3.3.1.min.js"  ></script>
+<script type="text/javascript" src="/asserts/js/bootstrap.min.js"  ></script>
+<script type="text/javascript"  th:src="@{/asserts/js/showtime.js}"></script>
+</body>
+</html>

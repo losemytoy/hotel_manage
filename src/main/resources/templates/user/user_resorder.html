@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>预定订单</title>
+    <link th:href="@{/asserts/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/sss.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/1.css}" rel="stylesheet">
+</head>
+<body onload="showtime()">
+<div th:replace="~{commons/bar::usertopbar}"></div>
+<table class="hovertable" align="center" width="70%">
+    <tr>
+        <td width="94" style="background-color: #0C0058;color: white" height="25"><div  align="center">预定单号</div></td>
+        <td width="155"style="background-color: #0C0058;color: white"><div  align="center">房间号</div></td>
+        <td width="133"style="background-color: #0C0058;color: white"><div  align="center">预定时间</div></td>
+        <td style="background-color: #0C0058;color: white" width="81"><div align="center">操作</div></td>
+    </tr>
+    <tr bgcolor="#FFFFFF" style="text-align: center" th:each="reserveOrder:${reserveOrders}">
+        <td style="background-color: white" onmouseover="this.style.backgroundColor='#cccccc';" onmouseout="this.style.backgroundColor='#ffffff';" th:text="${reserveOrder.reserveId}"></td>
+        <td style="background-color: white" onmouseover="this.style.backgroundColor='#cccccc';" onmouseout="this.style.backgroundColor='#ffffff';" th:text="${reserveOrder.roomId}"></td>
+        <td style="background-color: white" onmouseover="this.style.backgroundColor='#cccccc';" onmouseout="this.style.backgroundColor='#ffffff';" th:text="${reserveOrder.reserveTime}"></td>
+        <td style="background-color: white" onmouseover="this.style.backgroundColor='#cccccc';" onmouseout="this.style.backgroundColor='#ffffff';" align="center">
+            <a href="" th:href="@{/userresdel/}+${reserveOrder.reserveId}">取消预定</a></td>
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript" src="/asserts/js/jquery-3.3.1.min.js"  ></script>
+<script type="text/javascript" src="/asserts/js/bootstrap.min.js"  ></script>
+<script type="text/javascript"  th:src="@{/asserts/js/showtime.js}"></script>
+</body>
+</html>

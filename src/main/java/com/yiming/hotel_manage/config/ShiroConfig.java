@@ -1,8 +1,13 @@
 package com.yiming.hotel_manage.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+import com.yiming.hotel_manage.Filter.MyAuthenticationFilter;
+import com.yiming.hotel_manage.shiro.AdminRealm;
+import com.yiming.hotel_manage.shiro.UserModularRealmAuthenticator;
 import com.yiming.hotel_manage.shiro.UserRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy;
+import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -16,8 +21,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import sun.security.krb5.Realm;
 
+import javax.servlet.Filter;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 @Configuration
@@ -34,12 +43,17 @@ public class ShiroConfig {
         return credentialsMatcher;
     }
 
-    @Bean
+    @Bean(name = "userRealm")
     public UserRealm userRealm() {
-
         UserRealm userRealm = new UserRealm();
 //        userRealm.setCredentialsMatcher(matcher);
         return userRealm;
+    }
+
+    @Bean(name = "adminRealm")
+    public AdminRealm adminRealm(){
+        AdminRealm adminRealm = new AdminRealm();
+        return adminRealm;
     }
 
 
@@ -49,9 +63,15 @@ public class ShiroConfig {
     @Bean("securityManager")
     public DefaultWebSecurityManager getDefaultWebSecurityManager(
             HashedCredentialsMatcher hashedCredentialsMatcher) {
-        DefaultWebSecurityManager securityManager =
-                new DefaultWebSecurityManager();
-        securityManager.setRealm(userRealm());
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        //设置realm.
+        securityManager.setAuthenticator(modularRealmAuthenticator());
+        List<org.apache.shiro.realm.Realm> realms = new ArrayList<>();
+        //添加多个Realm
+        realms.add(userRealm());
+        realms.add(adminRealm());
+        securityManager.setRealms(realms);
+//        securityManager.setRealm(adminRealm());
         securityManager.setRememberMeManager(cookieRememberMeManager());
         return securityManager;
     }
@@ -69,14 +89,22 @@ public class ShiroConfig {
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
         bean.setSecurityManager(securityManager);
         Map<String, String> filterMap = new LinkedHashMap<>();
+        Map<String, Filter> filters = bean.getFilters();
         filterMap.put("/user/**", "authc");
         filterMap.put("/admin/**", "authc");
+//        filterMap.put("/adminroom/**", "authc");
+//        filterMap.put("/usermodify/**", "authc");
+//        filterMap.put("/userreslist/**", "authc");
         filterMap.put("/comment/**", "authc");
         filterMap.put("/static/**", "anon");
         filterMap.put("/**", "anon");
         filterMap.put("/logout", "logout");
         bean.setSuccessUrl("/main");
-        bean.setLoginUrl("/admin");
+
+        filters.put("authc",new MyAuthenticationFilter());
+        bean.setFilters(filters);
+//        bean.setLoginUrl("/admin");
+
         bean.setUnauthorizedUrl("/reg");
         bean.setFilterChainDefinitionMap(filterMap);
         return bean;
@@ -115,4 +143,16 @@ public class ShiroConfig {
     public ShiroDialect getShiroDialect() {
         return new ShiroDialect();
     }
+
+    /**
+     * 系统自带的Realm管理，主要针对多realm
+     * */
+    @Bean
+    public ModularRealmAuthenticator modularRealmAuthenticator(){
+        //自己重写的ModularRealmAuthenticator
+        UserModularRealmAuthenticator modularRealmAuthenticator = new UserModularRealmAuthenticator();
+        modularRealmAuthenticator.setAuthenticationStrategy(new AtLeastOneSuccessfulStrategy());
+        return modularRealmAuthenticator;
+    }
+
 }

@@ -34,5 +34,14 @@ public interface AdminMapper {
     int getEmpCount(String type);
 
     @Select("select * from tb_adminer where admin_name=#{name}")
-    Admin getEmpInfo(String name);
+    List<Admin> getEmpInfo(String name);
+
+    @Select("select * from tb_permission")
+    List<String> getAllPerms();
+
+    @Select("SELECT dbo.tb_permission.permission_code FROM dbo.tb_permission \n" +
+            "INNER JOIN dbo.tb_role_permission ON tb_role_permission.permission_id = tb_permission.permission_id\n" +
+            "INNER JOIN dbo.tb_user_role ON tb_user_role.role_id = tb_role_permission.role_id\n" +
+            "WHERE dbo.tb_user_role.user_account = #{adminAccount}")
+    List<String> getAdminPerms(Integer adminAccount);
 }

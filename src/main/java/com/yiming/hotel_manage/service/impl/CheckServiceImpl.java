@@ -34,7 +34,12 @@ public class CheckServiceImpl implements CheckService {
     }
 
     @Override
-    public void addCheckOrder(CheckOrder checkOrder) {
+    public void addCheckOrder(String userAccount,Integer roomId) {
+        checkOrderMapper.addCheckOrder(userAccount,roomId);
+    }
 
+    @Override
+    public List<CheckOrder> getCheckByUser(String id) {
+        return checkOrderMapper.getCheckByUser(id);
     }
 }

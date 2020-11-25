@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>用户首页</title>
+    <link th:href="@{/asserts/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/sss.css}" rel="stylesheet">
+</head>
+<body onload="showtime()"  th:style="'background:url(' + @{asserts/img/background.jpg} + ');background-repeat:no-repeat;background-size:100%'">
+    <div th:replace="~{commons/bar::usertopbar}"></div>
+
+    <div style="margin-top:-20px">
+<!--        <img style="width: 80%;height: 60%" th:src="@{asserts/img/background.jpg}">-->
+        <p style="font-family: 楷体;text-align: center;font-size: 60px;color:white;margin-top: 200px">欢迎来到</p>
+        <p style="font-family: 楷体;text-align: center;font-size: 60px;color:white;">龙门客栈</p>
+
+
+    </div>
+
+    <script type="text/javascript" src="/asserts/js/jquery-3.3.1.min.js"  ></script>
+    <script type="text/javascript" src="/asserts/js/bootstrap.min.js"  ></script>
+    <script type="text/javascript"  th:src="@{/asserts/js/showtime.js}"></script>
+</body>
+</html>

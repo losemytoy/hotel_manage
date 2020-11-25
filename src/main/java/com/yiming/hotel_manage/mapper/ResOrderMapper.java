@@ -19,4 +19,10 @@ public interface ResOrderMapper {
 
     @Select("select * from tb_room_reserve where reserve_id=#{id}")
     ReserveOrder getResOrderById(Integer id);
+
+    @Select("select * from tb_room_reserve where user_account=#{id}")
+    List<ReserveOrder> getResByUser(String id);
+
+    @Delete("delete from tb_room_reserve where room_id=#{id}")
+    void deleteResOrderByRoom(Integer id);
 }

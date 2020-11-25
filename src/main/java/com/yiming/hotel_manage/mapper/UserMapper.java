@@ -16,7 +16,8 @@ public interface UserMapper {
     @Select("select count(user_account) from tb_user_information")
     int getUserCount();
 
-    Admin selectAdmin(String adminAccount);
+    @Select("select * from tb_user_information where user_account=#{userAccount}")
+    User selectUser(String userAccount);
 
     @Select("SELECT * FROM dbo.tb_user_information")
     List<User> getAllUser() ;
@@ -24,15 +25,15 @@ public interface UserMapper {
     @Select("SELECT * FROM dbo.tb_user_information WHERE user_account=#{id}")
     User getUserById(String id);
 
-    @Update("UPDATE dbo.tb_user_information SET user_sfz=#{userSfz},user_name=#{userName},user_sex=#{userSex},user_age=#{userAge},user_tel=#{userTel} WHERE user_account=#{userAccount} ")
+    @Update("UPDATE dbo.tb_user_information SET user_pwd=#{userPwd},user_sfz=#{userSfz},user_name=#{userName},user_sex=#{userSex},user_age=#{userAge},user_tel=#{userTel} WHERE user_account=#{userAccount} ")
     void updateUser(User user);
 
     @Delete("DELETE dbo.tb_user_information WHERE user_account=#{id}")
     void deleteUser(String id);
 
-
+    @Insert("insert tb_user_information(user_account,user_pwd,user_sfz,user_name,user_tel) values(#{userAccount},#{userPwd},#{userSfz},#{userName},#{userTel})")
     void addUser(User user);
 
     @Select("SELECT * FROM dbo.tb_user_information WHERE user_name=#{name}")
-    User getUserInfo(String name);
+    List<User> getUserInfo(String name);
 }

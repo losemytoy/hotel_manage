@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -35,7 +36,7 @@
                     首页 <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" shiro:hasPermission="admin:checkorder">
                 <a class="nav-link" href="#" th:href="@{/admin/checkorder}"
                    th:class="${activeUri=='checkorder'?'nav-link active':'nav-link'}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
@@ -45,7 +46,7 @@
                     入住订单管理
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" shiro:hasPermission="admin:room">
                 <a class="nav-link" href="#" th:href="@{/admin/rooms}"
                    th:class="${activeUri=='room'?'nav-link active':'nav-link'}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase">
@@ -55,7 +56,7 @@
                     房间管理
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" shiro:hasPermission="admin:emp">
                 <a class="nav-link" href="#" th:href="@{/admin/emps}"
                    th:class="${activeUri=='admin'?'nav-link active':'nav-link'}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
@@ -67,7 +68,7 @@
                     员工管理
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" shiro:hasPermission="admin:resorder">
                 <a class="nav-link" href="#" th:href="@{/admin/resorder}"
                    th:class="${activeUri=='resorder'?'nav-link active':'nav-link'}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2">
@@ -78,7 +79,7 @@
                     预约订单管理
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" shiro:hasPermission="admin:user">
                 <a class="nav-link" href="#"th:href="@{/admin/users}"
                    th:class="${activeUri=='user'?'nav-link active':'nav-link'}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers">
@@ -89,64 +90,61 @@
                     用户管理
                 </a>
             </li>
+            <li class="nav-item" shiro:hasPermission="admin:data">
+                <a class="nav-link" href="#" th:href="@{http://127.0.0.1:8080/druid/index.html}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers">
+                        <path d="M5.75 13.5c.167-.333.25-.833.25-1.5h4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75z"/>
+                        <path fill-rule="evenodd" d="M13.991 3H2c-.325 0-.502.078-.602.145a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2z"/>
+                    </svg>
+                    数据监控
+                </a>
+            </li>
         </ul>
+    </div>
+</nav>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Saved reports</span>
-            <a class="d-flex align-items-center text-muted" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-            </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10 9 9 9 8 9"></polyline>
-                    </svg>
-                    Current month
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10 9 9 9 8 9"></polyline>
-                    </svg>
-                    Last quarter
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10 9 9 9 8 9"></polyline>
-                    </svg>
-                    Social engagement
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10 9 9 9 8 9"></polyline>
-                    </svg>
-                    Year-end sale
-                </a>
-            </li>
-        </ul>
+
+<nav class="navbar navbar-default" style="background: rgba(255,255,255,0.4)"  th:fragment="usertopbar">
+    <div class="container-fluid">
+        <div class="head_pic">
+<!--            <a href=""><img th:src="@{asserts/img/pic.png}" class="navbar-brand"/></a>-->
+            <svg t="1605864929642" class="navbar-brand" viewBox="0 0 1144 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2118" width="200" height="200"><path d="M271.058824 0l60.235294 60.235294h451.764706l60.235294-60.235294H271.058824zM210.823529 632.470588v391.529412h722.82353V632.470588H210.823529zM271.058824 210.823529h602.352941v271.058824H271.058824V210.823529z" fill="#FF6E6E" p-id="2119"></path><path d="M240.941176 210.823529L90.352941 60.235294h933.647059l-150.588235 150.588235H240.941176z m120.470589 30.117647h120.470588v90.864942h-120.470588V240.941176z m120.470588 210.31153h-120.470588v-89.690353h120.470588V451.252706zM512 240.941176h120.470588v90.864942h-120.470588V240.941176z m120.470588 210.31153h-120.470588v-89.690353h120.470588V451.252706zM662.588235 240.941176h120.470589v90.864942h-120.470589V240.941176z m120.470589 210.31153h-120.470589v-89.690353h120.470589V451.252706zM963.764706 662.588235H180.705882l-180.705882-180.705882h1144.470588l-180.705882 180.705882z m-240.941177 150.588236h-30.117647v210.823529h-240.941176v-210.823529h-30.117647v-90.352942h301.17647v90.352942z" fill="#0C0058" p-id="2120"></path></svg>
+        </div>
+        <div>
+            <ul class="nav navbar-nav "style="margin-left:70px" id="head">
+                <li><a href="/user/main">首页&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        个人设置
+                        <b class="caret"></b>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" th:href="@{/user/}+${session.userAccount}">我的信息</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" th:href="@{/usermodify/}+${session.userAccount}">修改资料</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" th:href="@{/userchecklist/}+${session.userAccount}">我的订单&nbsp;&nbsp;&nbsp;</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        预定信息
+                        <b class="caret"></b>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" th:href="@{/user/rooms}">预定房间</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" th:href="@{/userreslist/}+${session.userAccount}">预定订单</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="clock">
+            当前时间：<span id="clock"></span>
+        </div>
+
+        <div class="admin" >
+            用户：<a style="text-decoration: none;color: black">[[${session.userAccount}]]</a>&nbsp;<a style="text-decoration: none;color: black" th:href="@{/loginOut}">注销</a>
+        </div>
     </div>
 </nav>
 </body>

@@ -88,7 +88,7 @@ public class EmpManageController {
     //搜索员工
     @PostMapping("/admin/getEmpInfo")
     public String getEmpInfo(@RequestParam("name") String name,Model model){
-        Admin admin = adminService.getEmpInfo(name);
+        List<Admin> admin = adminService.getEmpInfo(name);
         model.addAttribute("admins",admin);
         return "admin/emp_Manage";
     }

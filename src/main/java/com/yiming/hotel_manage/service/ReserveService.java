@@ -15,4 +15,9 @@ public interface ReserveService {
     void deleteResOrder(Integer id);
 
     void addResOrder(ReserveOrder reserveOrder);
+
+    List<ReserveOrder> getResByUser(String id);
+
+    void deleteResOrderByRoom(Integer id);
+
 }

@@ -58,7 +58,19 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Admin getEmpInfo(String name) {
+    public List<Admin> getEmpInfo(String name) {
         return adminMapper.getEmpInfo(name);
     }
+
+    @Override
+    public List<String> getAllPerms() {
+        return adminMapper.getAllPerms();
+    }
+
+    @Override
+    public List<String> getAdminPerms(Integer adminAccount) {
+        return adminMapper.getAdminPerms(adminAccount);
+    }
+
+
 }

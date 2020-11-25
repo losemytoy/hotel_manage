@@ -22,5 +22,10 @@ public interface AdminService {
 
     int getUserCount();
 
-    Admin getEmpInfo(String name);
+    List<Admin> getEmpInfo(String name);
+
+    List<String> getAllPerms();
+
+    List<String> getAdminPerms(Integer adminAccount);
+
 }

@@ -16,8 +16,8 @@
                     <input type="password" placeholder="请输入密码" th:placeholder="#{login.password}" name="adminPwd">
                      <button type="submit" id="login-button" th:text="#{login.btn}">Sign in</button>
                     <p class=" mb-3 text-muted" style="margin-top: 5px">© 2020-2021</p>
-                    <a class="btn btn-sm" th:href="@{/admin(l='zh_CN')}">中文</a>
-                    <a class="btn btn-sm" th:href="@{/admin(l='en_US')}">English</a>
+                    <a class="btn btn-sm" th:href="@{/login/admin_login(l='zh_CN')}">中文</a>
+                    <a class="btn btn-sm" th:href="@{/login/admin_login(l='en_US')}">English</a>
                 </form>
             </div>
 

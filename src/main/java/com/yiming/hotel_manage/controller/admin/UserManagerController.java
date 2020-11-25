@@ -49,7 +49,7 @@ public class UserManagerController {
     //搜索用户
     @PostMapping("/admin/getUserInfo")
     public String getUserInfo(@RequestParam("username") String name,Model model){
-        User user = userService.getUserInfo(name);
+        List<User> user = userService.getUserInfo(name);
         model.addAttribute("users",user);
         return "admin/user_Manage";
     }
