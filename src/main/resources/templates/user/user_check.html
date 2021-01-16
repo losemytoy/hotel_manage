@@ -18,11 +18,13 @@
         <td width="94" style="background-color: #0C0058;color: white" height="25"><div  align="center">入住单号</div></td>
         <td width="155"style="background-color: #0C0058;color: white"><div  align="center">房间号</div></td>
         <td width="133"style="background-color: #0C0058;color: white"><div  align="center">入住时间</div></td>
+        <td width="133"style="background-color: #0C0058;color: white"><div  align="center">退房时间</div></td>
     </tr>
     <tr bgcolor="#FFFFFF" style="text-align: center" th:each="checkOrder:${checkOrders}">
         <td style="background-color: white" onmouseover="this.style.backgroundColor='#cccccc';" onmouseout="this.style.backgroundColor='#ffffff';" th:text="${checkOrder.checkId}"></td>
         <td style="background-color: white" onmouseover="this.style.backgroundColor='#cccccc';" onmouseout="this.style.backgroundColor='#ffffff';" th:text="${checkOrder.roomId}"></td>
         <td style="background-color: white" onmouseover="this.style.backgroundColor='#cccccc';" onmouseout="this.style.backgroundColor='#ffffff';" th:text="${checkOrder.checkTime}"></td>
+        <td style="background-color: white" onmouseover="this.style.backgroundColor='#cccccc';" onmouseout="this.style.backgroundColor='#ffffff';" th:text="${checkOrder.checkOutTime}"></td>
     </tr>
 </table>
 

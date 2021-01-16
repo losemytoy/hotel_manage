@@ -36,4 +36,7 @@ public interface RoomMapper {
 
     @Insert("insert tb_room_reserve(user_account,room_id) values(#{account},#{id})")
     void resRoom(Integer id,String account);
+
+    @Update("update tb_room set room_stat=#{stat} where room_id=#{id}")
+    void updateRoomStat(String stat,Integer id);
 }

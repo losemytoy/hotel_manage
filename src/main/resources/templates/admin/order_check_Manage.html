@@ -30,6 +30,7 @@
                         <th>用户账号</th>
                         <th>房间编号</th>
                         <th>入住时间</th>
+                        <th>退房时间</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -39,9 +40,14 @@
                             <td>[[${checkorder.userAccount}]]</td>
                             <td th:text="${checkorder.roomId}"></td>
                             <td th:text="${checkorder.checkTime}"></td>
+                            <td th:text="${checkorder.checkOutTime}"></td>
                             <td>
+                                <a type="submit" th:href="@{/admincheckout/{id}/{roomid}(id=${checkorder.checkId},roomid=${checkorder.roomId})}" class="btn btn-sm btn-warning " th:if="not ${checkorder.checkOutTime}">退房</a>
+<!--                                <button th:attr="date_uri=@{/admincheckout/}+${checkorder.checkId}+${checkorder.roomId}" class="btn btn-sm btn-warning outTimeBtn " th:if="not ${checkorder.checkOutTime}">退房</button>-->
                                 <button th:attr="del_uri=@{/admincheckdel/}+${checkorder.checkId}" class="btn btn-sm btn-danger deleteBtn">删除</button>
                             </td>
+
+
                         </tr>
                     </today>
                 </table>
@@ -50,6 +56,9 @@
         <form id="deleteEmpForm" method="post">
             <input type="hidden" name="_method" value="delete"/>
         </form>
+<!--        <form id="outTimeForm" method="post">-->
+<!--            <input type="hidden" name="_method" value="update"/>-->
+<!--        </form>-->
     </div>
 </div>
 <script type="text/javascript" src="../../static/asserts/js/jquery-3.2.1.slim.min.js" th:src="@{/webjars/jquery/3.5.1/jquery.js}" ></script>
@@ -64,6 +73,14 @@
         return false;
     });
 </script>
+
+<!--        退房功能实现-->
+<!--<script>-->
+<!--    $(".outTimeBtn").click(function () {-->
+<!--        $("#outTimeForm").attr("action",$(this).attr("date_uri")).submit();-->
+<!--        return false;-->
+<!--    });-->
+<!--</script>-->
 <script type="text/javascript" th:src="@{/asserts/js/showtime.js}"></script>
 </body>
 </html>

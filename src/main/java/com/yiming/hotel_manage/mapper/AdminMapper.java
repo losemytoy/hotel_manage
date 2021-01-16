@@ -33,7 +33,7 @@ public interface AdminMapper {
     @Select("select count(admin_account) from tb_adminer where admin_type=#{type}")
     int getEmpCount(String type);
 
-    @Select("select * from tb_adminer where admin_name=#{name}")
+    @Select("select * from tb_adminer where admin_name like '%${name}%' ")
     List<Admin> getEmpInfo(String name);
 
     @Select("select * from tb_permission")

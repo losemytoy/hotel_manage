@@ -24,11 +24,11 @@ public class RoomController {
     }
 
     //预定房间
+    //类加锁，使房间预定操作一次只能一个用户操作
     @RequestMapping("/userres/{id}/{account}")
-    public String addRoom(@PathVariable("id") Integer id,
+    public synchronized String addRoom(@PathVariable("id") Integer id,
                           @PathVariable("account") String account){
         roomService.resRoom(id,account);
         return "redirect:/user/rooms";
     }
-
 }

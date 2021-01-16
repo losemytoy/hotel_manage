@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -26,5 +28,8 @@ public interface CheckOrderMapper {
 
     @Insert("insert tb_room_check(user_account,room_id) values(#{userAccount},#{roomId})")
     void addCheckOrder(String userAccount,Integer roomId);
+
+    @Update("update tb_room_check set check_out_time=#{time} where check_id=#{id}")
+    void outCheckTime(Integer id, String time);
 
 }

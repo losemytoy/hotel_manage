@@ -53,4 +53,9 @@ public class RoomServiceImpl implements RoomService {
     public void resRoom(Integer id, String account) {
         roomMapper.resRoom(id,account);
     }
+
+    @Override
+    public void updateRoomStat(String stat,Integer id) {
+        roomMapper.updateRoomStat(stat,id);
+    }
 }

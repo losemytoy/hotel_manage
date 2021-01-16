@@ -4,6 +4,8 @@ import com.yiming.hotel_manage.pojo.CheckOrder;
 import com.yiming.hotel_manage.pojo.ReserveOrder;
 import com.yiming.hotel_manage.pojo.Room;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public interface CheckService {
@@ -14,6 +16,8 @@ public interface CheckService {
     void updateCheckOrder(CheckOrder checkOrder);
 
     void deleteCheckOrder(Integer id);
+
+    void outCheckTime(Integer id,String time);
 
     void addCheckOrder(String userAccount,Integer roomId);
 

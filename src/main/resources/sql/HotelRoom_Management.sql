@@ -74,6 +74,7 @@ CREATE Table tb_room_check
 	user_account varchar(30) not null,					--用户账号
 	room_id INT not null,						--房间号
 	check_time varchar(30),					--入住时间
+	check_out_time varchar(30),				--退房时间
 )
 GO
 

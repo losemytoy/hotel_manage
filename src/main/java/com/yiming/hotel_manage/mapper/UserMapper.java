@@ -34,6 +34,6 @@ public interface UserMapper {
     @Insert("insert tb_user_information(user_account,user_pwd,user_sfz,user_name,user_tel) values(#{userAccount},#{userPwd},#{userSfz},#{userName},#{userTel})")
     void addUser(User user);
 
-    @Select("SELECT * FROM dbo.tb_user_information WHERE user_name=#{name}")
+    @Select("SELECT * FROM dbo.tb_user_information WHERE user_name like '%${name}%' ")
     List<User> getUserInfo(String name);
 }
